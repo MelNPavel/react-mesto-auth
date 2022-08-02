@@ -1,0 +1,6 @@
+.element__img-remove{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}

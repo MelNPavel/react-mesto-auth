@@ -1,0 +1,19 @@
+.element__card-remove{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 16px;
+    width: 14px;
+    background-image: url(../../../image/recycle.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+    transition: opacity .4s ease;
+    background-color: transparent;
+    margin-left: 20px;
+}
+
+.element__card-remove:hover{
+    opacity: .4;
+}

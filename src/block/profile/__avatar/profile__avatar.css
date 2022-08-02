@@ -1,0 +1,29 @@
+.profile__avatar {
+    background: no-repeat 50%/cover;
+    border-radius: 50%;
+    min-width: 120px;
+    min-height: 120px;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+.profile__avatar:hover::before {
+    background: rgba(0,0,0, 0.8) url(../../../image/pencilAvatar.svg)  no-repeat 50%;
+    opacity: 0.8;
+}
+
+.profile__avatar::before {
+    height: 120px;
+    width: 120px;
+    background-size: 26px;
+    content: "";
+    transition: opacity .3s ease;
+    display: block;
+    opacity: 0;
+}
+
+@media screen and (max-width: 424px) {
+    .profile__avatar {
+       margin: 0 auto 26px;
+    }
+}
