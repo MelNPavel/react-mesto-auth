@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Header from '../components/Header.js';
 import Main from './Main.js';
@@ -10,6 +11,12 @@ import { CurrentUserContext } from '../context/CurrentUserContext.js';
 import { EditProfilePopup } from './EditProfilePopup.js';
 import { EditAvatarPopup } from './EditAvatarPopup.js';
 import { AddPlacePopup } from './AddPlacePopup.js';
+import { Login } from "./Login.js";
+import { Register } from "./Register.js";
+import ProtectedRoute from "./ProtectedRoute.js";
+import { InfoTooltip } from "./InfoTooltip.js";
+import { auth } from "./Auth.js";
+import { authIn } from "./Auth.js";
 
 function App() {
    
@@ -19,6 +26,12 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [currentUser, setcurrentUser] = useState(null);
     const [cards, setCards] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [infoTooltip, setInfoTooltip] = useState(false);
+
+    function handleInfotooltip() {
+        setInfoTooltip(true);
+    }
 
     function handleEditProfileClick() {
         setIsEditProfilePopupOpen(true);
@@ -37,6 +50,8 @@ function App() {
         setIsAddPlacePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
         setSelectedCard(null);
+        setInfoTooltip(false);
+
     }
 
     function handleCardClick(card) {
@@ -131,12 +146,37 @@ function App() {
              })
     }
     
+    //Регистрация
+    const handleRegister = (data) => {
+        auth(data.email, data.password)
+            .then((res) => {
+                return res;
+            })
+            .catch((err) => console.log(err));
+    }
+
+    //Вход через логин
+    const handleLogin = (data) => {
+        authIn(data.email, data.password)
+            .then((res) => {
+                return res;
+            })
+            .catch((err) => console.log(err));
+    }
+    
+    //Проверка перед входом
+     
+    
     return (
 
         <CurrentUserContext.Provider value={currentUser}>            
             <div className="page">
-                <Header />
-                <Main
+            <Header />
+            <Switch>
+                <ProtectedRoute
+                    exact path="/"    
+                    loggedIn={loggedIn}
+                    component={Main}    
                     onAddPlace={handleAddPlaceClick}
                     onEditProfile={handleEditProfileClick}
                     onEditAvatar={handleEditAvatarClick}
@@ -144,17 +184,31 @@ function App() {
                     cards={cards}
                     onCardLike={handleCardLike} 
                     onCardDelete={handleCardDelete}
-                />
+                />        
+                
+                <Route path="/signin">
+                    <Login 
+                    isOpen={infoTooltip}
+                    onUpdateAuth={handleLogin}
+                    />
+                </Route>
 
-                <Footer />
-                <ImagePopup
-                    card={selectedCard} onClose={closeAllPopups}
-                />
+                <Route path="/signup">
+                    <Register 
+                        onSubmitReg={handleInfotooltip}
+                        onUpdateAuth = {handleRegister}
+                    />
+                </Route>    
+            </Switch>
+            <Footer />
+                <ImagePopup card={selectedCard} onClose={closeAllPopups} />
                 <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
                 <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onUpdateAdd={handleAddPlaceSubmit} />
                 <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} /> 
                 <PopupWithForm name='consent' title='Вы уверены?' onClose={closeAllPopups} buttonText = 'да' />
+                <InfoTooltip isOpen={infoTooltip} onClose={closeAllPopups} />
             </div>            
+            
         </CurrentUserContext.Provider>
     );
 }

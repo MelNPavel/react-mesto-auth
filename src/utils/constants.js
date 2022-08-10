@@ -7,6 +7,9 @@ const config = {
     errorClass: 'popup__error_visible',
 };
 
+const baseUrl = "https://auth.nomoreparties.co";
+const myJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmY0MTUyMTYzOTBhNDAwMTQ2OTYxMDkiLCJpYXQiOjE2NjAxNjM1MDN9.nMr1EsDiPO1LmmC1oksqDJ3elyXwpbkbU7NEKQBeuH4";
+
 const configApi = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-43/',
   headers: {
@@ -30,5 +33,7 @@ export {
     userAvatar,
     userName,
     userAbout,
-    userData
+    userData,
+    baseUrl,
+    myJwt,
 }

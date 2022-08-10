@@ -60,3 +60,29 @@
 
 @import url(./block/element/__card-remove/_hidden/element__card-remove_hidden.css);
 @import url(./block/element/__card-remove/_visible/element__card-remove_visible.css);
+
+
+@import url(./block/auth/__button/auth__button.css);
+@import url(./block/auth/__button/_disable/auth__button_disable.css);
+@import url(./block/auth/__form/auth__form.css);
+@import url(./block/auth/__error/auth__error.css);
+@import url(./block/auth/__form/auth__form.css);
+@import url(./block/auth/__input/_type_error/auth__input_type_error.css);
+@import url(./block/auth/__input/auth__input.css);
+@import url(./block/auth/__title/auth__title.css);
+@import url(./block/auth/auth.css);
+@import url(./block/auth/__link/auth__link.css);
+@import url(./block/auth/__check-area/auth__check-area.css);
+@import url(./block/header/__auth-area/header__auth-area.css);
+
+@import url(./block/tooltip/tooltip.css);
+@import url(./block/tooltip/__container/tooltip__container.css);
+@import url(./block/tooltip/__container/_type_consent/tooltip__container_type_consent.css);
+@import url(./block/tooltip/__section/tooltip__section.css);
+@import url(./block/tooltip/__close-img/tooltip__close-img.css);
+@import url(./block/tooltip/__close/tooltip__close.css);
+@import url(./block/tooltip/__image/tooltip__image.css);
+@import url(./block/tooltip/__title/tooltip__title.css);
+@import url(./block/tooltip/_opened/tooltip_opened.css);
+@import url(./block/link-auth/link-auth.css);
+@import url(./block/link-auth/__signin/link-auth__signin.css);

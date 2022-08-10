@@ -1,0 +1,11 @@
+.auth__error{
+    display: none;
+    padding-top: 4px;
+    min-height: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+}

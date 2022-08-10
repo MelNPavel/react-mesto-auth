@@ -1,0 +1,23 @@
+.tooltip__close{
+    background: transparent;
+    border: 0;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity .4s ease;
+}
+
+.tooltip__close:hover{
+    opacity: .4;
+}
+
+@media screen and (max-width: 545px) {
+    .tooltip__close {
+        max-width: 20px;
+        max-height: 20px;
+        top: -35px;
+        right: 0px;
+    }
+}

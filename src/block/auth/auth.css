@@ -1,0 +1,9 @@
+.auth{
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    flex-direction: column;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    min-height: 100%;
+}
