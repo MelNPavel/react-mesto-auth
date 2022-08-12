@@ -194,7 +194,7 @@ function App() {
     }})
             .catch((err) => console.log(err));
     }
-    
+
     //Выход
     const onlogOut = () => {
         setLoggedIn(false);
@@ -206,8 +206,6 @@ function App() {
         tokenCheck();
      }, []);
 
-   
-    
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
