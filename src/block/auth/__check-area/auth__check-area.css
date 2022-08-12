@@ -5,3 +5,9 @@
     justify-content: center;
     margin-top: 215px;
 }
+
+@media screen and (max-width: 545px) {
+    .auth__check-area {
+       margin-top: 173px;
+    }
+}

@@ -1,4 +1,9 @@
 .header__auth-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
     margin: 0;
     font-family: 'Inter';
     font-style: normal;
@@ -6,4 +11,30 @@
     font-size: 18px;
     line-height: 22px;
     color: #ffffff;
+}
+
+@media screen and (max-width: 1023px) {
+    .header__auth-area {
+        padding-right: 28px;
+    }
+}
+
+@media screen and (max-width: 586px) {
+    .header__auth-area {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .header__auth-area{
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .header__auth-area{
+        font-size: 12px;
+        line-height: 16px;
+    }
 }

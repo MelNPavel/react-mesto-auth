@@ -16,5 +16,6 @@
     .auth__input {
         margin: 0;
         padding-bottom: 8px;
+        width: 282px;
     }
 }

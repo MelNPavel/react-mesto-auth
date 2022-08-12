@@ -1,6 +1,10 @@
-import React from "react";
-import { baseUrl, myJwt } from "../utils/constants.js";
+import { baseUrl } from "../utils/constants.js";
 
+
+const checkResponse = (res) => 
+  res.ok ? 
+    res.json()
+    : Promise.reject(new Error(`Ошибка ${res.status}: ${res.statusText}`));
 
 export const auth = (email, password) => {
   return fetch(`${baseUrl}/signup`, {
@@ -11,18 +15,10 @@ export const auth = (email, password) => {
     },
     body: JSON.stringify({email, password})
   })
-  .then((response) => {
-    try {
-      if (response.status === 200){
-        return response.json();
-      }
-    } catch(e){
-      return (e)
-    }
-  })
+  .then(res => checkResponse(res))
 };
 
-export const authIn = (email, password) => {
+export const authorize = (email, password) => {
   return fetch(`${baseUrl}/signin`, {
     method: 'POST',
     headers: {
@@ -31,32 +27,16 @@ export const authIn = (email, password) => {
     },
     body: JSON.stringify({email, password})
   })
-  .then((response) => {
-    try {
-      if (response.status === 200){
-        return response.json();
-      }
-    } catch(e){
-      return (e)
-    }
-  })
+  .then(res => checkResponse(res))
 };
 
-export const authCheckToken = (email, password) => {
+export const getContent = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      "Authorization" : `Bearer ${myJwt}`
-    }    
-  })
-  .then((response) => {
-    try {
-      if (response.status === 200){
-        return response.json();
-      }
-    } catch(e){
-      return (e)
+      "Authorization" : `Bearer ${token}`
     }
   })
+  .then(res => checkResponse(res))
 };

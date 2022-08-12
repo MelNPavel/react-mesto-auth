@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
 
@@ -8,8 +8,6 @@ export function Register(props) {
         email:'',
         password:'',
     })
-
-    const [message, setMessage] = useState('');
 
     const handleChandge = (e) => {
         const {name, value} = e.target;
@@ -26,12 +24,6 @@ export function Register(props) {
         });
     }
 
-    // useEffect(() => {
-        
-    // }}, [...registerData]); 
-
-
-   
     return(
         <div className="page">
            
@@ -65,17 +57,17 @@ export function Register(props) {
                     />
                     <span className="auth__error" id="type-password-error"></span>
                     <button className="auth__button" type="submit">
-                    Регистрация    {/* {props.buttonText} */}
+                    Регистрация
                     </button>
                 </form>
                 <div className="auth__check-area">
                     
                     
-                    <p className="auth__link">Уже зарегистрированы? 
+                    <p className="auth__link">Уже зарегистрированы?&nbsp;
                         <Link to={"/signin"} className="link-auth link-auth__signin">
                             Войти
                         </Link>
-                    </p>                    
+                    </p>
                 </div>
             </section>
         </div>

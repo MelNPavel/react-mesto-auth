@@ -5,6 +5,18 @@
     font-size: 18px;
     line-height: 22px;
     text-align: right;
-    color: #FFFFFF;
-    text-decoration:none
+    color: #A9A9A9;
+    text-decoration:none;
+    transition: opacity .4s ease;
+}
+
+.link-auth:hover{
+    opacity: .4;
+}
+
+@media screen and (max-width: 586px) {
+    .link-auth{
+        font-size: 14px;
+        line-height: 18px;
+    }
 }

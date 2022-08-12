@@ -16,3 +16,9 @@
         padding-bottom: 27px;
     }
 }
+
+@media screen and (max-width: 420px) {
+    .header{
+        flex-direction: column-reverse;
+    }
+}

@@ -1,9 +1,0 @@
-.info-tooltip__container_type_consent{
-    min-height: 181px;
-}
-
-@media screen and (max-width: 545px) {
-    .info-tooltip__container_type_consent {
-        min-height: 181px;
-    }
-}

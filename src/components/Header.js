@@ -1,32 +1,25 @@
 import React from 'react';
 import logo from '../image/Logo.svg';
-import { useLocation, Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 function Header(props) {
-    
-    let areaAuth = "";
-    let linkAuth = ""
-    const location = useLocation();
-
-    if (location.pathname === '/signin') {
-        areaAuth = "Регистрация"
-        linkAuth = "/signup"
-    }
-
-    if (location.pathname === '/signup'){
-        areaAuth = "Войти"
-        linkAuth = "/signin"        
-    }
-
-
+   
     return (
         <header className="header">
                 <img className="logo"  alt="Логотип" src={logo} />
-                <p className='header__auth-area'>
-                    <Link to={linkAuth} className="link-auth">
-                    {areaAuth}
-                    </Link>
-                </p>
+                <nav className='header__auth-area'>
+                    <p className='header__email'>{props.emailHeader}</p>
+                    <Route exact path="/">
+                        <Link to="/signin" className="link-auth" onClick={props.onlogOut}>Выйти </Link>
+                    </Route>
+                    <Route path="/signup">
+                        <Link to="/signin" className="link-auth">Войти</Link>
+                    </Route>
+                    <Route path="/signin">
+                        <Link to="/signup" className="link-auth">Регистрация</Link>
+                    </Route>
+                    
+                </nav>
         </header>
     )
 };

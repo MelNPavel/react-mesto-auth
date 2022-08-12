@@ -1,17 +1,11 @@
-// {"data":{"_id":"62f415216390a40014696109","email":"bublik@yandex.ru"}}
-
-// {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmY0MTUyMTYzOTBhNDAwMTQ2OTYxMDkiLCJpYXQiOjE2NjAxNjM1MDN9.nMr1EsDiPO1LmmC1oksqDJ3elyXwpbkbU7NEKQBeuH4"}
-
 import React, {useState} from "react";
 
 export function Login (props) {
-    
+
     const [loginData, setLoginData] = useState({
         email:'',
         password:'',
     })
-
-    // const [message, setMessage] = useState('');
 
     const handleChandge = (e) => {
         const {name, value} = e.target;
@@ -59,16 +53,10 @@ export function Login (props) {
                         value={loginData.password}
                     />
                     <span className="auth__error" id="type-password-error"></span>
-
                     <button className="auth__button" type="submit">
-                        Вход    {/* {props.buttonText} */}
+                        Вход
                     </button>
-
                 </form>
-                <div className="auth__check-area">
-                    
-                    {/* <p className="auth__link">Уже зарегистрированы? Войти</p> */}
-                </div>
             </section>
         </div>
     )
