@@ -1,7 +1,7 @@
 import React from "react";
 import iconClose from '../image/Close-Icon.svg';
-import inOk from '../image/union.svg';
-import inNo from '../image/ununion.svg';
+import successful from '../image/union.svg';
+import notSuccessful from '../image/ununion.svg';
 
 export function InfoTooltip ({isOpen, registration, onClose}) {
 
@@ -13,7 +13,7 @@ export function InfoTooltip ({isOpen, registration, onClose}) {
                     <img className="tooltip__close-img" src={iconClose} alt="закрытие всплывающего окна"/>
                 </button>
                 <div className="tooltip__section">
-                    <img className="tooltip__image" src={`${registration ? inOk : inNo}`} alt="Знак оповещающий о результате регистрации" />
+                    <img className="tooltip__image" src={`${registration ? successful : notSuccessful}`} alt="Знак оповещающий о результате регистрации" />
                     <h2 className='tooltip__title'> {`${registration ? "Вы успешно зарегистрировались!" : "Что-то пошло не так! Попробуйте еще раз."}`}</h2>
                 </div>
             </div>
