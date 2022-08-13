@@ -7,7 +7,7 @@ export function InfoTooltip ({isOpen, registration, onClose}) {
 
     return (
         // <div className={`info-tooltip ${props.isOpen ? 'info-tooltip_opened':''}`}></div>
-        <div className={`tooltip ${isOpen ? 'tooltip_opened':''}`}>
+        <div className={`tooltip ${isOpen && 'tooltip_opened'}`}>
             <div className='tooltip__container'>
                 <button className= 'tooltip__close' onClick = {onClose}>
                     <img className="tooltip__close-img" src={iconClose} alt="закрытие всплывающего окна"/>

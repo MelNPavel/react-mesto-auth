@@ -1,4 +1,4 @@
-import { baseUrl } from "../utils/constants.js";
+import { baseUrl } from "./constants.js";
 
 
 const checkResponse = (res) => 

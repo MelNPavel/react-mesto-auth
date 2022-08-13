@@ -15,7 +15,7 @@ import { Login } from "./Login.js";
 import { Register } from "./Register.js";
 import ProtectedRoute from "./ProtectedRoute.js";
 import { InfoTooltip } from "./InfoTooltip.js";
-import { auth, authorize, getContent } from "./Auth.js";
+import { auth, authorize, getContent } from "../utils/Auth.js";
 
 function App() {
    
@@ -57,6 +57,7 @@ function App() {
 
     //Загрузка первоначальных данных пользователя
     useEffect(() => {
+        if (loggedIn){
         api.getUserInfo()
             .then((res) => {
                 setcurrentUser(res)
@@ -64,10 +65,11 @@ function App() {
             .catch((err) => {
                 console.log ('Ошибка' + err);
               })
-    }, [])
+}}, [loggedIn])
 
     //Загрузка карточек первоначальная
     useEffect(() => {
+        if (loggedIn){
         api.getTasksCards()
             .then(res => {
                 setCards(res)
@@ -75,7 +77,7 @@ function App() {
             .catch((err) => {
                 console.log ('Ошибка' + err);
             })
-    }, [])
+}}, [loggedIn])
 
     //Обновление данных пользователя
     function handleUpdateUser(data) {
@@ -151,17 +153,18 @@ function App() {
         }
             getContent(jwt)
                 .then((res) => {
-                    setLoggedIn(true)
+                    setLoggedIn(true);
                     setEmail(res.data.email);
+                    history.push ('/');
                 })
                 .catch((err) => console.log(err));
     }
 
-    useEffect(() =>{
-        if (loggedIn){
-            history.push ('/')
-        }
-     }, [loggedIn]);
+    // useEffect((loggedIn, history) => {
+    //     if (loggedIn){
+    //         history.push ('/')
+    //     }
+    //  }, [loggedIn]);
 
     //Регистрация
     const handleRegister = (data) => {
@@ -172,6 +175,7 @@ function App() {
                     setRegistration(true);
                     setLoggedIn(true);
                     setEmail(data.email);
+                    history.push ('/signin');
                 }
             })
             .catch((err) => {
@@ -191,8 +195,13 @@ function App() {
                 setLoggedIn(true);
                 localStorage.setItem('jwt', res.token);
                 setEmail(data.email);
+                history.push ('/');
     }})
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err)
+            setInfoTooltip(true);
+            setRegistration(false);
+        });
     }
 
     //Выход
